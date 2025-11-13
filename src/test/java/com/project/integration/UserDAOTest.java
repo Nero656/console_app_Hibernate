@@ -1,4 +1,4 @@
-package com.project;
+package com.project.integration;
 
 import com.project.DAO.UserDAO;
 import com.project.Models.User;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.DisplayName.class)
 public class UserDAOTest {
 
-    @Container 
+    @Container
     private static final PostgreSQLContainer<?> postgres =
             new PostgreSQLContainer<>("postgres:17.1-alpine")
                     .withDatabaseName("users_db")
@@ -130,7 +130,7 @@ public class UserDAOTest {
         userDAO.create(user1);
         assertThrows(Exception.class, () -> userDAO.create(user2));
 
-        assertNotNull(userDAO.findById(user1.getId())); // первый всё ещё существует
+        assertNotNull(userDAO.findById(user1.getId()));
     }
 
     @AfterAll

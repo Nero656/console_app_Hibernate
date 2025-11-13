@@ -11,17 +11,6 @@
         <property name="hibernate.connection.username">Nero</property>
         <property name="hibernate.connection.password">0907</property>
 
-        <!-- Диалект Hibernate -->
-<!--        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
-
-        <!-- Показ SQL в консоли -->
-<!--        <property name="hibernate.show_sql">true</property>-->
-<!--        <property name="hibernate.format_sql">true</property>-->
-
-
-        <!-- Автогенерация схемы (опционально) -->
-<!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
-
         <mapping class="com.project.Models.User"/>
 
     </session-factory>

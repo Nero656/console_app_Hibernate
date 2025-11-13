@@ -1,8 +1,7 @@
 package com.project.View.CreateUser;
 
-import com.project.Controller.UserDAOController;
+import com.project.DAO.UserDAO;
 import com.project.Models.User;
-import java.util.Scanner;
 
 import static com.project.View.Validate.*;
 import static ru.exxo.jutil.Printer.*;
@@ -17,7 +16,7 @@ public class CreateUserView {
         String hashedPassword = User.HashPassword(password);
         int age = inputAge();
 
-        UserDAOController userDAOController = new UserDAOController();
+        UserDAO userDAOController = new UserDAO();
 
         printf("User created successfully with id: %s! \n",
                 userDAOController.create(

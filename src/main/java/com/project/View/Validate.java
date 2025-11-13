@@ -6,10 +6,11 @@ import static ru.exxo.jutil.Printer.print;
 import static ru.exxo.jutil.Printer.println;
 
 public class Validate {
-    static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
 
     public static int inputId() {
-        while (true) {
+        boolean isValid = false;
+        while (!isValid) {
             print("Input id: ");
             String input = scanner.nextLine().trim();
 
@@ -21,15 +22,19 @@ public class Validate {
                     continue;
                 }
 
+                isValid = true;
                 return id;
             } catch (NumberFormatException e) {
                 println("Error: invalid id!");
             }
         }
+
+        throw new IllegalStateException("Unexpected error in inputName");
     }
 
     public static String inputName() {
-        while (true) {
+        boolean isValid = false;
+        while (!isValid) {
             print("Input name: ");
             String name = scanner.nextLine().trim();
 
@@ -43,12 +48,16 @@ public class Validate {
                 continue;
             }
 
+            isValid = true;
             return name;
         }
+
+        throw new IllegalStateException("Unexpected error in inputName");
     }
 
     public static String inputEmail() {
-        while (true) {
+        boolean isValid = false;
+        while (!isValid) {
             print("Input email: ");
             String email = scanner.nextLine().trim();
 
@@ -62,12 +71,17 @@ public class Validate {
                 continue;
             }
 
+            isValid = true;
             return email;
         }
+
+        throw new IllegalStateException("Unexpected error in inputName");
     }
 
     public static String inputPassword() {
-        while (true) {
+        boolean isValid = false;
+
+        while (!isValid) {
             print("Input password: ");
             String password = scanner.nextLine().trim();
 
@@ -90,12 +104,17 @@ public class Validate {
                 continue;
             }
 
+            isValid = true;
             return password;
         }
+
+        throw new IllegalStateException("Unexpected error in inputName");
     }
 
     public static int inputAge() {
-        while (true) {
+        boolean isValid = false;
+
+        while (!isValid) {
             print("Input age: ");
             String input = scanner.nextLine().trim();
 
@@ -107,11 +126,14 @@ public class Validate {
                     continue;
                 }
 
+                isValid = true;
                 return age;
             } catch (NumberFormatException e) {
                 println("Error: invalid age!");
             }
         }
+
+        throw new IllegalStateException("Unexpected error in inputName");
     }
 
     public static boolean isValidEmail(String email) {

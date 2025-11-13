@@ -18,14 +18,14 @@ public class Home {
         boolean runing = true;
         while (runing) {
             MainMenu();
-            int choice = readInt("Chose action: ");
+            int choice = readInt("\nChose action: ");
             runing = handleMainChoice(choice);
         }
     }
 
     private void MainMenu(){
         List<String> menu = List.of(
-                "Select an action",
+                "\nSelect an action",
                 "1: Create user",
                 "2: Find user by ID",
                 "3: Update user by id",
@@ -58,7 +58,6 @@ public class Home {
 
     private void exit() {
         println("Goodbye!");
-        System.exit(0);
     }
 
     private int readInt(String prompt) {

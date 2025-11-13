@@ -7,7 +7,7 @@ import com.project.Util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class UserDAO implements UserDAO {
+public class UserDAO implements UserDAOInterface {
 
     @Override
     public User create(User user) {
@@ -28,17 +28,11 @@ public class UserDAO implements UserDAO {
 
     @Override
     public User findById(Long id) {
-        Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
             return session.find(User.class, id);
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-                throw e;
-            }
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     @Override
