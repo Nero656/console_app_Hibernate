@@ -1,4 +1,4 @@
-package com.project.Controller;
+package com.project.DAO;
 
 import com.project.Models.User;
 

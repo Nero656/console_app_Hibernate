@@ -1,4 +1,4 @@
-package com.project.Controller;
+package com.project.DAO;
 
 import static ru.exxo.jutil.Printer.*;
 
@@ -7,7 +7,7 @@ import com.project.Util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class UserDAOController implements UserDAO {
+public class UserDAO implements UserDAO {
 
     @Override
     public User create(User user) {
