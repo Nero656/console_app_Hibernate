@@ -1,4 +1,4 @@
-package com.project.Controller;
+package com.project.DAO;
 
 import static ru.exxo.jutil.Printer.*;
 
@@ -7,7 +7,7 @@ import com.project.Util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class UserDAOController implements UserDAO {
+public class UserDAO implements UserDAOInterface {
 
     @Override
     public User create(User user) {
@@ -28,17 +28,11 @@ public class UserDAOController implements UserDAO {
 
     @Override
     public User findById(Long id) {
-        Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
             return session.find(User.class, id);
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-                throw e;
-            }
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     @Override

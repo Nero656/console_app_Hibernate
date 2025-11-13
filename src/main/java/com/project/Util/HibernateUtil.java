@@ -1,12 +1,14 @@
 package com.project.Util;
 
 import com.project.Models.User;
+import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    @Getter
+    private static SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
         try {
@@ -19,13 +21,16 @@ public class HibernateUtil {
         }
     }
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
     public static void shutdown() {
         if (sessionFactory != null && !sessionFactory.isClosed()) {
             sessionFactory.close();
         }
+    }
+
+    public static void overrideSessionFactory(SessionFactory factory) {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
+        sessionFactory = factory;
     }
 }
